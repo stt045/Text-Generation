@@ -11,10 +11,21 @@
 #include <vector>
 #include <algorithm> // cpp sort
 
+/*
+ * This program builds a text from another provided text document. It utilized the 
+ * Markov Text Generation data structure to accomplish this.
+ *
+ *
+ */
 class TextGenerator {
 public:
   unordered_map <string, vector<string>> umap;
 
+  /*
+   * Builds a textGenerator object using the provided directory.
+   * This opens all of the files within the given directory, reads them in, and
+   * tokenizes them into individual words and punctuations.
+   */
   TextGenerator(const string & textDirectory);
 
   string generateNextWord(const string & prevWord);
