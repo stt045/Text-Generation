@@ -72,7 +72,17 @@ void TextGenerator::populateTable(vector<string> & tokens) {
 }
 
 vector<string> TextGenerator::tokenize(string & input) {
-
+	vector<string> toReturn;
+    string word;
+    stringstream stream(input);
+    
+    // Tokenize based on white space
+    while(getline(stream, word, ' ')) {
+        if(!word.empty()) {
+            toReturn.push_back(word);
+        }    
+    }
+    return toReturn;
 }
 
 string TextGenerator::genRand(vector<string> & v) {
