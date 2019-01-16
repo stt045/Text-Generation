@@ -50,6 +50,12 @@ TextGenerator::TextGenerator(const string & textDirectory) {
     		infile.close();
 
     		// Tokenize text into individual words and punctuations
+    		tokens = tokenize(output);
+            populateTable(tokens);
+            output = "";
+    	} else {
+    		cerr << "Couldn't Open Directory" << textDirectory << endl;
+    		exit(1);
     	}
 
 	}
@@ -78,6 +84,7 @@ vector<string> TextGenerator::tokenize(string & input) {
     
     // Tokenize based on white space
     while(getline(stream, word, ' ')) {
+        // Add item to vector if it is not an empty string
         if(!word.empty()) {
             toReturn.push_back(word);
         }    
