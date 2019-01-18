@@ -62,7 +62,7 @@ TextGenerator::TextGenerator(const string & textDirectory) {
 }
 
 string TextGenerator::generateNextWord(const string & prevWord) {
-
+	return genRand(this->umap[prevWord]);
 }
 
 string TextGenerator::generateText(const int numWords) {
@@ -70,7 +70,18 @@ string TextGenerator::generateText(const int numWords) {
 }
 
 string TextGenerator::removeChars(string & text) {
-
+	string toReturn;
+    for(unsigned int i = 0; i < text.length(); i++) {
+        
+        // Adding white space around punctuations
+        if(PUNCTUATION.find(text[i]) != string::npos) { 
+            toReturn = toReturn + " " + text[i] + " ";
+        }
+        else if(UNWANTED_CHARACTERS.find(text[i]) == string::npos) {
+            toReturn += text[i];
+        } 
+    }
+    return toReturn;
 }
 
 void TextGenerator::populateTable(vector<string> & tokens) {
@@ -100,5 +111,6 @@ string TextGenerator::genRand(vector<string> & v) {
 
 // Destructor
 TextGenerator::~TextGenerator() {
-
+	// Never used dynamically allocated memory
+	// No need to call the destructor
 }
