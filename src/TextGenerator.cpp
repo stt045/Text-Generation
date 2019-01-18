@@ -71,16 +71,19 @@ string TextGenerator::generateText(const int numWords) {
 
 string TextGenerator::removeChars(string & text) {
 	string toReturn;
+
+	// Iterate through each character within the string
     for(unsigned int i = 0; i < text.length(); i++) {
         
         // Adding white space around punctuations
         if(PUNCTUATION.find(text[i]) != string::npos) { 
             toReturn = toReturn + " " + text[i] + " ";
-        }
+        } // Removing the unwanted characters
         else if(UNWANTED_CHARACTERS.find(text[i]) == string::npos) {
             toReturn += text[i];
         } 
     }
+    // returns a more formatted string
     return toReturn;
 }
 

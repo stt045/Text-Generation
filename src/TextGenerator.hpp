@@ -34,6 +34,10 @@ public:
 
   string removeChars(string & text);
 
+  /*
+   * random number generator that scales based on the size of the passed in vector
+   * and then indexes the element at the random index in the vector
+   */
   string genRand(vector<string> & tokens);
 
   vector<string> tokenize(string & input);
