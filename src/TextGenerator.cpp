@@ -101,7 +101,6 @@ void TextGenerator::populateTable(vector<string> & tokens) {
         }else { // If it doesn't exist, add it
             vector<string> tempVector;
             this->umap[key] = tempVector;
-            // Add to current word's vector
             this->umap[curr].push_back(key);
         }
         curr = key;
