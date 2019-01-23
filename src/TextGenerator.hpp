@@ -28,6 +28,10 @@ public:
    */
   TextGenerator(const string & textDirectory);
 
+  /* 
+   * Function that generates the next word to output.
+   * It calls on the random function to find the next word.
+   */
   string generateNextWord(const string & prevWord);
 
   string generateText(const int numWords);
@@ -39,6 +43,9 @@ public:
    * and then indexes the element at the random index in the vector
    */
   string genRand(vector<string> & tokens);
+
+  // Fills the hash table with string keys and vetors
+  void populateTable(vector<string> & tokens);
 
   vector<string> tokenize(string & input);
 

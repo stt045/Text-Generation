@@ -43,9 +43,9 @@ TextGenerator::TextGenerator(const string & textDirectory) {
     		}
 
     		// Remove Unwanted Charactor! 
-    		while() {
-
-    		}
+    		while(getline(infile, line)) {
+                output += removeChars(line);
+            }
 
     		infile.close();
 
@@ -88,7 +88,24 @@ string TextGenerator::removeChars(string & text) {
 }
 
 void TextGenerator::populateTable(vector<string> & tokens) {
+	// The first word of the text would be following a period 
+	string curr = ".";
+    vector<string> v;
+    this->umap[curr] = v;
 
+    // Loop through entire tokens vector to fill the hash map
+    for(string key : tokens) {
+        // If the key already exists within the hash map
+        if(this->umap.find(key) != this->umap.end()) {
+            umap[curr].push_back(key);
+        }else { // If it doesn't exist, add it
+            vector<string> tempVector;
+            this->umap[key] = tempVector;
+            // Add to current word's vector
+            this->umap[curr].push_back(key);
+        }
+        curr = key;
+    } //end-for
 }
 
 vector<string> TextGenerator::tokenize(string & input) {
