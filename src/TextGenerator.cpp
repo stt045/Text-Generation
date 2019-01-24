@@ -66,7 +66,23 @@ string TextGenerator::generateNextWord(const string & prevWord) {
 }
 
 string TextGenerator::generateText(const int numWords) {
+	string nextWord = ".";
+    string document;
 
+    for(int i = 0; i < numWords; i++) {
+        nextWord = generateNextWord(nextWord);
+        
+        if(nextWord == "." || nextWord == "!" || nextWord == "?" || nextWord == "," || i == 0) {
+            document.append(nextWord);
+        }else if(nextWord.empty() == true) {
+            nextWord = ".";
+            document.append(nextWord);
+        }else {
+            document.append(" ");
+            document.append(nextWord);
+        } 
+    } 
+    return document;
 }
 
 string TextGenerator::removeChars(string & text) {
